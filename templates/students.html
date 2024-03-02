@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<h4>This is the students page!</h4>
+
+<header>
+	<a href="{% url 'student_new' %}">New student</a>
+</header>
+
+<h2>Students list</h2>
+
+<ol>
+	{% for student in all_students_list %}
+	<li>
+		{{ student.first_name }} {{ student.last_name }} : {{ student.id }}
+		<a href="{% url 'student_edit' student.pk %}">Edit</a>
+		<a href="{% url 'student_delete' student.pk %}">Delete</a>
+	</li>
+	{% endfor %}
+</ol>
+
+{% endblock content %}
